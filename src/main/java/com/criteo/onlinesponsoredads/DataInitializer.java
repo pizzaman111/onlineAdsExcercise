@@ -46,15 +46,6 @@ public class DataInitializer implements ApplicationListener<ApplicationReadyEven
                     new Product("wall clock", "decorative", 120.0, "rrrr"));
 
             productRepository.saveAllAndFlush(products);
-
-            List<Product> prods = productRepository.getAllBySerialNumberIn(List.of("cccc", "eeee", "hhhh"));
-            Instant now = Instant.now();
-            List<Campaign> campaigns = List.of(new Campaign("campaign1", now.minus(5, ChronoUnit.DAYS), 60.0, Collections.emptyList()),
-                    new Campaign("campaign2", now.minus(7, ChronoUnit.DAYS), 40.0, Collections.emptyList()),
-                    new Campaign("campaign3", now.minus(6, ChronoUnit.DAYS), 90.0, prods),
-                    new Campaign("campaign4", now.minus(11, ChronoUnit.DAYS), 80.0, Collections.emptyList()));
-
-            campaignRepository.saveAllAndFlush(campaigns);
         }
     }
 }
